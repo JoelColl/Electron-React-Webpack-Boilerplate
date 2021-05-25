@@ -1,5 +1,11 @@
 const { app } = require('electron');
 const serve = require('electron-serve');
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} = require('electron-devtools-installer');
+
 const { createWindow } = require('./helpers');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -27,13 +33,8 @@ module.exports = function runElectron() {
     }
 
     if (!isProd) {
-      const {
-        REACT_DEVELOPER_TOOLS,
-        default: installExtension,
-      } = require('electron-devtools-installer');
-      await installExtension(REACT_DEVELOPER_TOOLS, {
-        loadExtensionOptions: { allowFileAccess: true },
-      });
+      await installExtension(REDUX_DEVTOOLS);
+      await installExtension(REACT_DEVELOPER_TOOLS);
 
       mainWindow.webContents.openDevTools();
     }
