@@ -32,8 +32,8 @@ module.exports = {
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
-    contentBase: './public',
+    contentBase: __dirname + '/public',
     hot: true,
-    port: 8082,
+    port: 8080,
   },
 };

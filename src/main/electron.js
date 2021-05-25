@@ -29,7 +29,7 @@ module.exports = function runElectron() {
     if (isProd) {
       await mainWindow.loadURL('app://./index.html');
     } else {
-      await mainWindow.loadURL(`http://localhost:8082`);
+      await mainWindow.loadURL(`http://localhost:8080`);
     }
 
     if (!isProd) {
